@@ -1,88 +1,78 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  Button,
-  FlatList,
-  Image,
-  ScrollView,
-} from "react-native";
-import axios from "axios";
+import { StatusBar } from 'expo-status-bar';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
+import TrendingData from '../../../services/TrendingData';
+
+export default function HomeScreen({navigation}) {
+  
+  const [data, setDate] = useState([]);
+
+  const getRndom = async () => {
+    const giphy = await TrendingData();
+    setDate(giphy.data.coins);
+    console.log(giphy.data.coins);
+  };
+
+  useEffect(() => {
+    getRndom();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+
+      <ScrollView>
+        <Text> Trending Coins:</Text>
+        {data.map((coins, index) => {
+          return (
+            <View key={index} style={styles.Cryptocontainer}>
+              <Image
+                style={styles.img}
+                source={{ uri: `${coins.item.thumb}` }}
+              />
+              <Text> {coins.item.name}</Text>
+              <Text>{coins.item.symbol}</Text>
+              
+              
+            </View>
+          );
+        })} 
+      </ScrollView>
+
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  btn: {
-    backgroundColor: "white",
-    height: 40,
-    width: 200,
-    borderRadius: 30,
-    marginTop: 10,
+  imageStyle: {
+    width: 100,
+    height: 100,
+  },
+  Cryptocontainer: {
+    backgroundColor: 'gray',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 30,
+    margin: 2,
+    borderColor: '#2a4944',
+    borderWidth: 1,
+    backgroundColor: '#d2f7f1',
+  },
+  CryptocontainerHeading:{
+    fontSize:20,
   },
   img: {
     display: "flex",
     flexDirection: "row",
-    height: 200,
-    width: 200,
-  },
-  divStyle: {
-    margin: 10,
+    height: 25,
+    width: 25,
   },
 });
-const HomeScreen = () => {
-  const [gifs, setGifs] = useState([]);
-  const [term, updateTerm] = useState("");
-  const handleSearchGiphy = async () => {
-    const apikey = "ULw4daLtlqPVJvDNBELYe87ltTEKWn5U";
-    const url = "http://api.giphy.com/v1/gifs/search";
-    const response = axios
-      .get(`${url}?api_key=${apikey}&q=${term}`)
-      .then((res) => {
-        setGifs(res.data.data);
-      });
-    return response;
-  };
-  const handbutton = () => {
-    handleSearchGiphy();
-  };
-  useEffect(() => {
-    handbutton();
-  }, []);
-  return (
-    <View style={styles.container}>
-      <TextInput
-        style={{
-          height: 40,
-          width: 180,
-          borderColor: "gray",
-          borderWidth: 1,
-          marginTop: 10,
-        }}
-        placeholder="search for data"
-        onChangeText={(val) => updateTerm(val)}
-      />
 
-      <View style={styles.btn}>
-        <Button title=" search" onPress={handbutton} />
-      </View>
-
-      {gifs.map((item, index) => {
-        return (
-
-          <ScrollView key={index} style={styles.divStyle}>
-             <Image
-              style={styles.img}
-              source={{ uri: `${item.images.original.url}` }}
-            />
-          </ScrollView>
-
-        );
-
-      })}
-    </View>
-  );
-};
-export default HomeScreen;

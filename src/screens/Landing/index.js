@@ -32,15 +32,20 @@ export default function LandingScreens({navigation}) {
 
       <ScrollView>
         {data.map((item, index) => {
-        return (
-          <View key={index} style={styles.Cryptocontainer}>
-           <Text style={styles.CryptocontainerHeading}>{item.id}</Text>
-           <Text>${item.current_price}</Text>
-           {/* <Text>24 Hour High: {item.high_24h}</Text>
-           <Text>24 Hour Low: {item.low_24h}</Text>     */}
-          </View>
-        );
-      })} 
+          return (
+            <View key={index} style={styles.Cryptocontainer}>
+              
+              <Text> {item.market_cap_rank}.</Text>
+              <Image
+                style={styles.img}
+                source={{ uri: `${item.image}` }}
+              />
+              <Text style={styles.CryptocontainerHeading}>{item.id}</Text>
+              <Text>${item.current_price}</Text>
+              
+            </View>
+          );
+        })} 
       </ScrollView>
 
     </View>
@@ -71,7 +76,12 @@ const styles = StyleSheet.create({
   },
   CryptocontainerHeading:{
     fontSize:20,
-  }
-
+  },
+  img: {
+    display: "flex",
+    flexDirection: "row",
+    height: 25,
+    width: 25,
+  },
 });
 
