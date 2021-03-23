@@ -1,17 +1,23 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LandingScreen from "./screens/Landing";
-import HomeScreen from './screens/Home'
+import HomeScreen from './screens/Home';
+import Faqs from "./screens/Faqs";
+import Aboutus from './screens/About Us';
 
-const RootStack = createStackNavigator()
+const Tab = createBottomTabNavigator();
+
+
 function App() {
   return (
     <NavigationContainer>
-      <RootStack.Navigator>
-        <RootStack.Screen name="Landing" component={LandingScreen}/>
-        <RootStack.Screen name="Home" component={HomeScreen}/>
-      </RootStack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Digital Currencies" component={LandingScreen} />
+        <Tab.Screen name="Faqs" component={Faqs} />
+        <Tab.Screen name="About Us" component={Aboutus} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

@@ -61,7 +61,7 @@ const HomeScreen = () => {
           borderWidth: 1,
           marginTop: 10,
         }}
-        placeholder="search for giphy"
+        placeholder="search for data"
         onChangeText={(val) => updateTerm(val)}
       />
 
@@ -78,7 +78,7 @@ const HomeScreen = () => {
               source={{ uri: `${item.images.original.url}` }}
             />
           </ScrollView>
-          
+
         );
 
       })}

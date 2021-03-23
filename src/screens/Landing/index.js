@@ -21,26 +21,25 @@ export default function LandingScreens({navigation}) {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Button
-        title="Get Data" 
+        title="Refresh Data" 
         onPress={getRndom}
       />
-      <Button 
+
+      {/* <Button 
         title="Go to home"
         onPress={()=> navigation.navigate('Home')}
-      />
+      /> */}
+
       <ScrollView>
         {data.map((item, index) => {
         return (
-
           <View key={index} style={styles.Cryptocontainer}>
            <Text style={styles.CryptocontainerHeading}>{item.id}</Text>
-           <Text>Current Price: {item.current_price}</Text>
-           <Text>24 Hour High: {item.high_24h}</Text>
-           <Text>24 Hour Low: {item.low_24h}</Text>    
+           <Text>${item.current_price}</Text>
+           {/* <Text>24 Hour High: {item.high_24h}</Text>
+           <Text>24 Hour Low: {item.low_24h}</Text>     */}
           </View>
-          
         );
-
       })} 
       </ScrollView>
 
