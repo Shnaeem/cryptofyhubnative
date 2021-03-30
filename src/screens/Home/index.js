@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
 import TrendingData from '../../../services/TrendingData';
 
-export default function HomeScreen({navigation}) {
-  
+export default function HomeScreen({ navigation }) {
+
   const [data, setDate] = useState([]);
 
   const getRndom = async () => {
@@ -32,11 +32,11 @@ export default function HomeScreen({navigation}) {
               />
               <Text> {coins.item.name}</Text>
               <Text>{coins.item.symbol}</Text>
-              
-              
+
+
             </View>
           );
-        })} 
+        })}
       </ScrollView>
 
     </View>
@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
     margin: 2,
     borderColor: '#2a4944',
     borderWidth: 1,
-    backgroundColor: '#d2f7f1',
+    backgroundColor: '#FECE46',
   },
-  CryptocontainerHeading:{
-    fontSize:20,
+  CryptocontainerHeading: {
+    fontSize: 20,
   },
   img: {
     display: "flex",
