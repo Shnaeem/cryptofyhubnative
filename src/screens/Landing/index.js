@@ -21,8 +21,8 @@ export default function LandingScreens({ navigation }) {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Button
-        style={styles.button}
-        title="Refresh Data"
+        color="#1E6738"
+        title="Refresh"
         onPress={getRndom}
       />
 
@@ -54,6 +54,11 @@ export default function LandingScreens({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#6814D3',
+    borderWidth: 5,
+    borderRadius: 10
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -84,10 +89,6 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
-  button: {
-    backgroundColor: '#6814D3',
-    borderWidth: 5,
-    borderRadius: 10
-  },
+
 });
 
