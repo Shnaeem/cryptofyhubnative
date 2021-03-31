@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
 import FetchData from '../../../services/FetchData';
 
-export default function LandingScreens({navigation}) {
-  
+export default function LandingScreens({ navigation }) {
+
   const [data, setDate] = useState([]);
 
   const getRndom = async () => {
@@ -21,7 +21,8 @@ export default function LandingScreens({navigation}) {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Button
-        title="Refresh Data" 
+        color="#1E6738"
+        title="Refresh"
         onPress={getRndom}
       />
 
@@ -34,7 +35,7 @@ export default function LandingScreens({navigation}) {
         {data.map((item, index) => {
           return (
             <View key={index} style={styles.Cryptocontainer}>
-              
+
               <Text> {item.market_cap_rank}.</Text>
               <Image
                 style={styles.img}
@@ -42,10 +43,10 @@ export default function LandingScreens({navigation}) {
               />
               <Text style={styles.CryptocontainerHeading}>{item.id}</Text>
               <Text>${item.current_price}</Text>
-              
+
             </View>
           );
-        })} 
+        })}
       </ScrollView>
 
     </View>
@@ -53,6 +54,11 @@ export default function LandingScreens({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#6814D3',
+    borderWidth: 5,
+    borderRadius: 10
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -70,12 +76,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 30,
     margin: 2,
-    borderColor: '#2a4944',
+    borderColor: '##6814D3',
     borderWidth: 1,
-    backgroundColor: '#d2f7f1',
+    backgroundColor: '#FECE46',
   },
-  CryptocontainerHeading:{
-    fontSize:20,
+  CryptocontainerHeading: {
+    fontSize: 20,
   },
   img: {
     display: "flex",
@@ -83,5 +89,6 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
+
 });
 
