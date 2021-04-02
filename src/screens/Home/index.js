@@ -22,7 +22,11 @@ export default function HomeScreen({ navigation }) {
       <StatusBar style="auto" />
 
       <ScrollView>
-        <Text> Trending Coins:</Text>
+        <Text h1 style={styles.logo}>Welcome to CryptofyHUB!</Text>
+        <Text h1 style={styles.sling}>You're likely here because you're interested in the following: 🎮 💻 📱 ⌚️</Text>
+        <Text h1 style={styles.slingTwo}>And of course: 💰 💳 💸</Text>
+        <Text h1 style={styles.trendingList}>So let's get started with a list of the top 7 cryptocurrencies</Text>
+
         {data.map((coins, index) => {
           return (
             <View key={index} style={styles.Cryptocontainer}>
@@ -30,7 +34,7 @@ export default function HomeScreen({ navigation }) {
                 style={styles.img}
                 source={{ uri: `${coins.item.thumb}` }}
               />
-              <Text> {coins.item.name}</Text>
+              <Text style={styles.sling}> {coins.item.name}</Text>
               <Text>{coins.item.symbol}</Text>
 
 
@@ -49,6 +53,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: 'Avenir',
+    alignItems: 'center',
+
   },
   imageStyle: {
     width: 100,
@@ -64,9 +71,13 @@ const styles = StyleSheet.create({
     borderColor: '#2a4944',
     borderWidth: 1,
     backgroundColor: '#FECE46',
+    fontFamily: 'Avenir',
+
   },
   CryptocontainerHeading: {
     fontSize: 20,
+    fontFamily: 'Avenir',
+
   },
   img: {
     display: "flex",
@@ -74,5 +85,40 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
+  logo: {
+    fontFamily: 'Avenir',
+    alignItems: 'center',
+    fontWeight: "bold",
+    fontSize: 30,
+    alignItems: 'center',
+    margin: 2,
+
+
+  },
+  sling: {
+    fontFamily: 'Avenir',
+    alignItems: 'center',
+    fontSize: 23,
+    alignItems: 'center',
+    margin: 2,
+
+  },
+  slingTwo: {
+    fontFamily: 'Avenir',
+    alignItems: 'center',
+    fontSize: 23,
+    alignItems: 'center',
+    margin: 2,
+
+  },
+  trendingList: {
+    fontFamily: 'Avenir',
+    alignItems: 'center',
+    fontSize: 23,
+    alignItems: 'center',
+    margin: 2,
+
+  },
+
 });
 
